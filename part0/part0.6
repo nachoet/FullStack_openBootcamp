@@ -1,0 +1,10 @@
+browser->server: HTTP https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+server-->browser: new_note_spa
+
+note over browser:
+browser calls new_note_spa.js which executes on server
+and returns json data to be updated in notes. No reloading of 
+page is done
+end note
+
+browser->server: Response status 201 - created
