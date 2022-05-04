@@ -1,0 +1,16 @@
+browser->server: HTTP GET ttps://studies.cs.helsinki.fi/exampleapp/spa
+server-->browser: html code
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+server-->browser: spa.js
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: data.json
+
+note over browser:
+browser calls spa.js which executes on server
+and returns html page with json data included
+end note
+
+browser->server: Response status 200 - ok
+
