@@ -17,37 +17,33 @@ const App = () => {
   ]
 
   const Header = (props) => {
-    console.log(props)
     return <h1>{props.course}</h1>
   }
 
-  const Part1 = (props) => {
-    return (<p> {parts[0].name} {parts[0].exercises}</p>)
-  }
-
-  const Part2 = (props) => {
-    return <p> {parts[1].name} {parts[1].exercises}</p>
-  }
-
-  const Part3 = (props) => {
-    return <p>{parts[2].name} {parts[2].exercises}</p>
+  const Parts = (props) => {
+    return ((parts.map(value =>
+      <div key={value.name}>
+        <p>{value.name}</p>
+        <p>{value.exercises}</p>
+      </div>
+    )))
   }
 
   const Content = () => {
     return (
       <div>
-        <Part1 ></Part1>
-        <Part2 ></Part2>
-        <Part3></Part3>
+        <Parts parts={parts}></Parts>
       </div>
     )
   }
 
-  const Total = () => {
+  const Total = (props) => {
+    console.log(props)
+
     return (
+
       <div>
         <p>Number of exercises {parts[0].exercises + parts[1].exercises + parts[2].exercises}</p>
-
       </div>
     )
   }
@@ -56,8 +52,8 @@ const App = () => {
     <div>
       <Header course={course}>
       </Header>
-      <Content></Content>
-      <Total></Total>
+      <Content parts={parts}></Content>
+      <Total parts={parts}></Total>
     </div>
   )
 }
