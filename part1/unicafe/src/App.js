@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import './App.css'
 
 const App = () => {
   // save clicks of each button to its own state
@@ -36,7 +37,17 @@ const App = () => {
 
   const StatisticLine = (props) => {
     return (
-      <p>{props.text} {props.value}</p>
+
+      <table>
+        <thead></thead>
+        <tbody>
+          <tr>
+            <td >{props.text}</td>
+            <td> {props.value}</td>
+          </tr>
+        </tbody>
+      </table>
+
     )
   }
 
@@ -55,6 +66,7 @@ const App = () => {
 
           <StatisticLine text="Overall" value={good + neutral + bad} />
           <StatisticLine text="Average" value={(good + neutral + bad) / 3} />
+          <StatisticLine text="Positive" value={good / (good + neutral + bad) * 100 + `%`} />
         </div>
       )
     }
