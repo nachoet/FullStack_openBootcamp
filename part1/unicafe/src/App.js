@@ -28,6 +28,18 @@ const App = () => {
     setAllClicks(allClicks.concat('b'))
   }
 
+  const Button = ({ handleClick, text }) => {
+    return (
+      <button onClick={handleClick}>{text}</button>
+    )
+  }
+
+  const StatisticLine = (props) => {
+    return (
+      <p>{props.text} {props.value}</p>
+    )
+  }
+
   const Statistics = (props) => {
     if (props.allClicks.length === 0) {
       return (
@@ -37,11 +49,12 @@ const App = () => {
     } else {
       return (
         <div>
-          <p>Good {good}</p>
-          <p>Neutral {neutral}</p>
-          <p>Bad {bad}</p>
-          <p>Overall {good + neutral + bad}</p>
-          <p>Averages: {(good + neutral + bad) / 3}</p>
+          <StatisticLine text="good" value={good} />
+          <StatisticLine text="neutral" value={neutral} />
+          <StatisticLine text="bad" value={bad} />
+
+          <StatisticLine text="Overall" value={good + neutral + bad} />
+          <StatisticLine text="Average" value={(good + neutral + bad) / 3} />
         </div>
       )
     }
@@ -50,9 +63,9 @@ const App = () => {
   return (
     <div>
       <h1>Please give feedback</h1>
-      <button onClick={handleGood}>Good</button>
-      <button onClick={handleNeutral}>Neutral</button>
-      <button onClick={handleBad}>Bad</button>
+      <Button handleClick={handleGood} text="good" />
+      <Button handleClick={handleNeutral} text="neutral" />
+      <Button handleClick={handleBad} text="bad" />
 
       <h2>Statistics</h2>
 
