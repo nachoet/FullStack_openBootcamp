@@ -1,30 +1,5 @@
 import { useState } from 'react'
 
-const Button = () => {
-  return (
-    <div>
-      <button onClick={getRandomInt}>Get Anecdotes</button>
-    </div>
-  )
-}
-
-const Anecdotes = (props) => {
-  return (
-    <div>
-      {props.anecdotes}
-    </div>
-  )
-}
-
-const getRandomInt = (max) => {
-  return Math.floor(Math.random() * max);
-}
-
-
-
-console.log(getRandomInt(7))
-
-
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often',
@@ -37,11 +12,35 @@ const App = () => {
   ]
 
   const [selected, setSelected] = useState(0)
+  const [voted, setVoted] = useState([0, 0, 0, 0, 0, 0, 0])
+
+
+  const getRandomInt = () => {
+    const rndInt = Math.floor(Math.random() * 7)
+    setSelected(rndInt)
+  }
+
+  const voteSelected = (props) => {
+    // copy of last state of values
+    const arrVotes = [...voted]
+    //increment selected vote in arr
+    arrVotes[selected] += 1
+    //save new state
+    setVoted(arrVotes)
+  }
+
+  let mostVoted = Math.max(...voted)
+  const index = voted.indexOf(mostVoted);
 
   return (
     <div>
-      <Anecdotes anecdotes={anecdotes[selected]} />
-      <Button />
+      <h1>Anecdote of the day</h1>
+      <p>{anecdotes[selected]}</p>
+      <p>has {voted[selected]} votes</p>
+      <button onClick={getRandomInt} >Next Anecdote</button>
+      <button onClick={voteSelected} > Vote</button>
+      <h1>Anecdotes with most votes</h1>
+      <p anecdotes={anecdotes}>{anecdotes[index]}</p>
     </div>
   )
 }
