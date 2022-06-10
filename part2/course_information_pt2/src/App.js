@@ -1,14 +1,4 @@
-import Total from './components/Total'
-import Header from './components/Header'
-import Part from './components/Part'
-
-
-// const Course = ({ courses }) =>
-//   <>
-//     <Header courses={courses} />
-//     <Part courses={courses} />
-//     <Total courses={courses} />
-//   </>
+import Course from './components/Course'
 
 
 const App = () => {
@@ -57,17 +47,9 @@ const App = () => {
     }
   ]
 
-  const [first, second] = courses
-  // console.log(first, second);
-
   return (
     <>
-      <Header header={first}></Header>
-      <Part part={first}></Part>
-      <Total total={first}></Total>
-      <Header header={second} />
-      <Part part={second}></Part>
-      <Total total={second}></Total>
+      <Course courses={courses}></Course>
     </>
   )
 
