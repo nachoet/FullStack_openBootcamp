@@ -1,9 +1,9 @@
 import Part from './Part'
 
-const Content = ({ course }) =>
+const Content = ({ courses }) =>
     <>
         <Part
-            part={course.parts}
+            courses={courses}
         />
     </>
 
